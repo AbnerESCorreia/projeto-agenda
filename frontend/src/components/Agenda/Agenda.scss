@@ -1,0 +1,225 @@
+@use "../../App.scss" as *;
+
+.agenda-section {
+  padding: 40px 20px;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.agenda-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 40px;
+  align-items: start;
+
+  @media (max-width: 950px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Coluna do Formulário
+.card-input {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+
+  h3 {
+    margin-bottom: 20px;
+    color: $azul-escuro;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    &:focus {
+      outline: none;
+      border-color: $azul-royal;
+    }
+  }
+
+  .dia-inteiro-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    &:hover {
+      background: $azul-claro;
+    }
+    svg {
+      font-size: 1.6rem;
+      color: #cbd5e0;
+      &.active {
+        color: $azul-royal;
+      }
+    }
+  }
+
+  .duration-display {
+    background: $azul-claro;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: $azul-escuro;
+    border: 2px dashed $azul-royal;
+    font-weight: 600;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: opacity 0.2s;
+    &.btn-confirm {
+      background: $azul-royal;
+    }
+    &.btn-edit {
+      background: #27ae60;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Coluna da Lista (Uma tarefa por linha)
+.coluna-lista {
+  h3 {
+    margin-bottom: 20px;
+    color: $azul-escuro;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.lista-scroll {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; // Espaçamento vertical entre os cards
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 10px;
+  }
+}
+
+// Estilo do Card Individual (Layout Horizontal)
+.item-agenda {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  border-left: 6px solid $azul-royal;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .info {
+    flex: 1;
+    strong {
+      font-size: 1.2rem;
+      color: $azul-escuro;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .desc {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      span {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        background: #edf2f7;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        &.tag-dur {
+          background: $azul-escuro;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .acoes {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #eee;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      transition: 0.2s;
+      &:hover {
+        transform: scale(1.2);
+      }
+      &.google {
+        color: #4285f4;
+      }
+      &.edit {
+        color: #f1c40f;
+      }
+      &.del {
+        color: #e74c3c;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
+    .acoes {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: none;
+      margin-top: 15px;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+}

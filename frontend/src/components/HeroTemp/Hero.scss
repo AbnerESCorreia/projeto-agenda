@@ -1,0 +1,36 @@
+@use "../../App.scss" as *;
+
+.hero {
+  height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $azul-escuro, $azul-royal);
+  color: white;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .btn-start {
+    display: inline-block;
+    padding: 10px 25px;
+    background: white;
+    color: $azul-escuro;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+
+    &:hover {
+      transform: scale(1.05);
+      background: $azul-claro;
+    }
+  }
+}
